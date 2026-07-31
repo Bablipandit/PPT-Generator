@@ -122,12 +122,14 @@ def run_agent(leader_agent,query):
 
 #=====================Step 7: Agent call==========================
 # leader_agent creation
-leader_agent = create_agent(
+if all(ALL_API):
+  leader_agent = create_agent(
     model = model,
     tools = [search_latest_info,
              generate_image]
 )
-
+else:
+  st.info("Pass-All-APP-KEYS and Rerun")
 #===================Step 8:Navbar Streamlit=========================
 tab1,tab2,tab3 = st.tabs(["Generate Image",
                           "Fetch Latest News",
